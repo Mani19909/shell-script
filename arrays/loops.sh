@@ -1,4 +1,4 @@
-#!/bin/bash/
+#!/bin/bash
 fruits=("apply" "banana" "mango")
 for item in "${fruits[@]}"
 do 
