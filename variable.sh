@@ -10,8 +10,11 @@ echo "Suresh: not bad. I am thinking to updrade to devops"
 # while changing accidently you may you change actual code
 # so we can use variables
 
+#declaring varibale
 persion1="Ramesh"
 persion2="Suresh"
+
+#referring variable
 echo "$persion1:: Hello $persion2, How are you?"
 echo "$persion2:: Hi $persion1, I am fine. How are you?"
 echo "$persion1: I am fine tooo. how is your work?"
