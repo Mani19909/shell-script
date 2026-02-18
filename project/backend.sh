@@ -8,8 +8,9 @@ R="\e[31m"
 G="\e[32m"
 Y="\e[33m"
 N="\e[0m"
+
 echo "please enter DB password:"
-read -s mysql_root_passowrd
+read -s mysql_root_password
 
 VALIDATE(){
     if [ $1 -ne 0 ]
@@ -29,10 +30,10 @@ else
 echo " you are super user."
 fi
 
-dnf moudle disable nodejs -y &>>$LOGFILE
+dnf module disable nodejs -y &>>$LOGFILE
 VALIDATE $? "Disabling default nodejs"
 
-dnf module enable nodejs:20 -y
+dnf module enable nodejs:20 -y &>>$LOGFILE
 VALIDATE $? "Enabling nodejs:20 version"
 
 dnf install nodejs -y &>>$LOGFILE
@@ -48,7 +49,7 @@ echo -e "Expense user already created...$Y SKIPPING $N"
 fi
 
 mkdir -p /app &>>$LOGFILE
-VALIDATE $? "Cretaing app directory"
+VALIDATE $? "Creating app directory"
 
 curl -o /tmp/backend.zip https://expense-builds.s3.us-east-1.amazonaws.com/expense-backend-v2.zip &>>$LOGFILE
 VALIDATE $? "Downloading backend code"
@@ -56,7 +57,7 @@ VALIDATE $? "Downloading backend code"
 cd /app
 rm -rf /app/*
 unzip /tmp/backend.zip &>>$LOGFILE
-VALIDATE $? "Exteacted backend code"
+VALIDATE $? "Extracted backend code"
 
 npm install &>>$LOGFILE
 VALIDATE $? "Installing nodejs dependencies"
