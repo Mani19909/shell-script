@@ -1,6 +1,6 @@
 #!/bin/bash
 
-THRESHOLD=80
+THRESHOLD=10
 
 df -h | grep -vE 'Filesystem|tmpfs|cdrom' | awk '{print $5 " " $1}' | while read output; do
     usage=$(echo $output | awk '{print $1}' | sed 's/%//g')
